@@ -1,0 +1,8 @@
+/dev.txt
+/node_modules/
+/.idea/
+/secrets.json
+/build/
+/accounts.json
+/truffle-config.js
+.env
