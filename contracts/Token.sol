@@ -11,11 +11,11 @@ pragma solidity 0.6.12;
 import "./libs/BEP20.sol";
 
 // Token with Governance.
-contract Token is BEP20('BOOBFUT', 'FUT') {
+contract Token is BEP20 {
     mapping(address => bool) public minters;
     event minterStatus(address minter, bool status);
-    constructor() public {
-        _mint(msg.sender, 1 ether); // minting 1 token to test pools.
+    constructor(string memory _name, string memory _symbol ) public BEP20(_name, _symbol)  {
+        minters[msg.sender] = true;
     }
     // Creates `_amount` token to `_to`. Must only be called by the owner (MasterChef).
     function mint(address _to, uint256 _amount) public onlyMinters {
@@ -31,7 +31,6 @@ contract Token is BEP20('BOOBFUT', 'FUT') {
     }
     // New minters can only be added vi MasterChef that is timelocked.
     function setMinterStatus( address _minter, bool _status) external onlyOwner {
-        require( _minter != address(0x0) , "0x0 minter");
         minters[ _minter ] = _status;
         emit minterStatus(_minter, _status);
     }

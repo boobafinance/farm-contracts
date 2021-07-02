@@ -10,8 +10,17 @@ module.exports = async function(deployer, network, accounts) {
     const block_latest = await web3.eth.getBlock("latest");
     let startBlock;
 
+    if( ! devaddr ){
+        console.log('!devaddr')
+        process.exit(1);
+    }
+    if( ! feeAddress ){
+        console.log('!feeAddress')
+        process.exit(1);
+    }
+
     if( network == 'bsc' ){
-        startBlock = 17752271;
+        startBlock = 8952378;
     }
     if( network == 'testnet' ){
         startBlock = block_latest.number;
@@ -26,8 +35,11 @@ module.exports = async function(deployer, network, accounts) {
         return;
     }
 
-    await deployer.deploy(TOKEN);
+    await deployer.deploy(TOKEN,"Live","LIV");
     const TOKEN_DEPLOYED = await TOKEN.deployed();
+
+    const mint = web3.utils.toWei('110');
+    await TOKEN_DEPLOYED.mint(mint);
 
     await deployer.deploy(MASTER, TOKEN_DEPLOYED.address,
         devaddr, feeAddress, tokenPerBlock, startBlock);
@@ -35,5 +47,5 @@ module.exports = async function(deployer, network, accounts) {
     // await MASTER_DEPLOYED.nft_init(nft, nftMinter1, nftMinter2);
 
     await TOKEN_DEPLOYED.setMinterStatus(MASTER.address, true);
-    await TOKEN_DEPLOYED.transferOwnership(MASTER.address);
+    // await TOKEN_DEPLOYED.transferOwnership(MASTER.address);
 };

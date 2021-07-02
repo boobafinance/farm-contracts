@@ -13583,10 +13583,10 @@ truffle-hdwallet-provider@^1.0.17:
     web3 "1.2.1"
     websocket "^1.0.28"
 
-truffle-plugin-verify@^0.5.4:
-  version "0.5.7"
-  resolved "https://registry.yarnpkg.com/truffle-plugin-verify/-/truffle-plugin-verify-0.5.7.tgz#c684c0a78a0dad8bf00c631ba1ac41c53a7b5040"
-  integrity sha512-q26VTkrpzI0lS8D1j8nKG2+2cmTwc7rkDkdtvbWKAdUV+5Ijemgeo8PeQBNKKFsTqYo1ebG7IWTLE+B/7KFo1A==
+truffle-plugin-verify@^0.5.10:
+  version "0.5.10"
+  resolved "https://registry.yarnpkg.com/truffle-plugin-verify/-/truffle-plugin-verify-0.5.10.tgz#7acc2b64a1d9dc52ba865e50760804a6ebeeb5c0"
+  integrity sha512-8nxZKxkMAja6t7OLGyUlej8vpo7MxQg2fhZfyn/Vfsg4HD/GX2NGphxEhm0c90vuv1ozZbxwXl/tM7ygrbEPuQ==
   dependencies:
     axios "^0.21.1"
     cli-logger "^0.5.40"
